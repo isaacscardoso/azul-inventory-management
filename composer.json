@@ -1,0 +1,19 @@
+{
+  "name": "vendor_name/azul_inventory_management",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Isaac Cardoso Silva",
+      "email": "mukanshinbluedev@outlook.com"
+    }
+  ],
+  "require": {
+  }
+}
