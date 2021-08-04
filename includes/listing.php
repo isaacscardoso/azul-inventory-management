@@ -1,5 +1,16 @@
 <?php
 
+$message = '';
+if (isset($_GET['status'])) {
+    switch ($_GET['status']) {
+        case 'success':
+            $message = '<div class="alert alert-success">Ação executada com sucesso!</div>';
+            break;
+        case 'error':
+            $message = '<div class="alert alert-danger">Ação não executada!</div>';
+            break;
+    }
+}
 $results = '';
 
 if (isset($products)) {
@@ -12,7 +23,7 @@ if (isset($products)) {
                 <td>' . 'R$ ' . $product->preco . '</td>
                 <td>' . $product->estoque . '</td>
                 <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
-                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_modificacao)) . '</td>
+                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_atualizacao)) . '</td>
                 <td>
                     <a href="edit.php?id=' . $product->id.'" style="text-decoration: none">
                         <button type="button" class="btn btn-primary">Editar</button>
@@ -25,9 +36,17 @@ if (isset($products)) {
     }
 }
 
+$results = strlen($results) ? $results : /** @lang text */
+            '<tr>
+                <td colspan="8" class="text-center">
+                    Nenhum Produto encontrado!
+                </td>
+             </tr>'
+
 ?>
 
 <main>
+    <?=$message?>
     <section>
         <a href="register.php">
             <button class="btn btn-success">Adicionar Produto</button>

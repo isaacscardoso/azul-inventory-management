@@ -47,7 +47,7 @@ class Product
      * Data de modificação do produto
      * @var string
      */
-    public string $modificationDate;
+    public string $atualizationDate;
 
     /**
      * Método responsável por listar todos os produtos do DB
@@ -83,7 +83,7 @@ class Product
     {
         // definir a data
         $this->postDate = date('Y-m-d H:i:s');
-        $this->modificationDate = date('Y-m-d H:i:s');
+        $this->atualizationDate = date('Y-m-d H:i:s');
 
         // inserir o produto no DB
         $objDatabase = new Database('produtos');
@@ -101,7 +101,7 @@ class Product
      * Método responsável por atualizar o produto no DB
      * @return boolean
      */
-    public function updateProduct()
+    public function updateProduct(): bool
     {
         return (new Database('produtos'))->update('id= ' . $this->id, [
             'nome' => $this->name,
@@ -109,5 +109,14 @@ class Product
             'preco' => $this->price,
             'estoque' => $this->stock
         ]);
+    }
+
+    /**
+     * Método responsável por excluir a vaga no DB
+     * @return boolean
+     */
+    public function deleteProduct(): bool
+    {
+        return (new Database('produtos'))->delete('id = '.$this->id);
     }
 }
