@@ -17,7 +17,6 @@ if (isset($products)) {
     foreach ($products as $product) {
         $results .= /** @lang text */
             '<tr>
-                <td>' . $product->id . '</td>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
                 <td>' . 'R$ ' . $product->preco . '</td>
@@ -56,7 +55,6 @@ $results = strlen($results) ? $results : /** @lang text */
         <table class="table bg-light mt-3 table-hover">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>PRODUTO</th>
                 <th>SKU</th>
                 <th>PREÇO</th>

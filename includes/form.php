@@ -5,7 +5,7 @@
         <!-- nome do produto -->
         <div class="form-group col-md-3">
             <label>Nome</label>
-            <input type="text" class="form-control" name="name" required/>
+            <input type="text" class="form-control" name="name" value="" required/>
         </div>
         <!-- sku do produto -->
         <div class="form-group col-md-3">

@@ -7,6 +7,7 @@ const TITLE_BUTTON = 'Editar';
 
 use App\Entity\Product;
 
+// validação do ID
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     header('location: index.php?status=error');
     exit;
