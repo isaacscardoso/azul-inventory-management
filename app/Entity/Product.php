@@ -49,6 +49,31 @@ class Product
      */
     public string $modificationDate;
 
+    /**
+     * Método responsável por listar todos os produtos do DB
+     * @param string|null $where
+     * @param string|null $order
+     * @param string|null $limit
+     * @return array
+     */
+    public static function getAllProducts(string $where = null, string $order = null, string $limit = null): array
+    {
+        return (new Database('produtos'))->select($where, $order, $limit)->fetchAll(
+            PDO::FETCH_CLASS, self::class
+        );
+    }
+
+    /**
+     * Método responsável por buscar um produto por ID
+     * @param integer $id
+     * @return Product
+     */
+    public static function getProductById(int $id): Product
+    {
+        return (new Database('produtos'))->select(' id=' . $id)->fetchObject(
+            self::class
+        );
+    }
 
     /**
      * Método responsável por cadastrar produtos no DB
@@ -73,17 +98,16 @@ class Product
     }
 
     /**
-     * Método responsável por listar todos os produtos do DB
-     * @param string|null $where
-     * @param string|null $order
-     * @param string|null $limit
-     * @return array
+     * Método responsável por atualizar o produto no DB
+     * @return boolean
      */
-    public static function getAllProducts(string $where = null, string $order = null, string $limit = null): array
+    public function updateProduct()
     {
-        return (new Database('produtos'))->select($where, $order, $limit)->fetchAll(
-            PDO::FETCH_CLASS, self::class
-        );
+        return (new Database('produtos'))->update('id= ' . $this->id, [
+            'nome' => $this->name,
+            'sku' => $this->sku,
+            'preco' => $this->price,
+            'estoque' => $this->stock
+        ]);
     }
-
 }

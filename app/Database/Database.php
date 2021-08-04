@@ -127,4 +127,23 @@ class Database
 
         return $this->execute($query);
     }
+
+    /**
+     * @param string $where
+     * @param array $values
+     * @return boolean
+     */
+    public function update(string $where, array $values): bool
+    {
+        // dados da query
+        $fields = array_keys($values);
+
+        // monta a query
+        $query = 'UPDATE ' . $this->table . ' SET ' . implode('=?,', $fields) . '=? WHERE ' . $where;
+
+        // executa a querry
+        $this->execute($query, array_values($values));
+
+        return true;
+    }
 }
