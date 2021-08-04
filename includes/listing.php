@@ -9,10 +9,18 @@ if (isset($products)) {
                 <td>' . $product->id . '</td>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
-                <td>' . $product->preco . '</td>
+                <td>' . 'R$ ' . $product->preco . '</td>
                 <td>' . $product->estoque . '</td>
-                <td>' . $product->data_postagem . '</td>
-                <td>' . $product->data_modificacao . '</td>
+                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
+                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_modificacao)) . '</td>
+                <td>
+                    <a href="edit.php?id=' . $product->id.'" style="text-decoration: none">
+                        <button type="button" class="btn btn-primary">Editar</button>
+                    </a>
+                    <a href="delete.php?id=' . $product->id.'">
+                        <button type="button" class="btn btn-danger">Excluir</button>
+                    </a>
+                </td>
              </tr>';
     }
 }
@@ -36,6 +44,7 @@ if (isset($products)) {
                 <th>ESTOQUE</th>
                 <th>DATA DE POSTAGEM</th>
                 <th>DATA DE MODIFICAÇÃO</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
