@@ -70,7 +70,7 @@ class Product
      */
     public static function getProductById(int $id): Product
     {
-        return (new Database('produtos'))->select(' id=' . $id)->fetchObject(
+        return (new Database('produtos'))->select('id = ' . $id)->fetchObject(
             self::class
         );
     }

@@ -42,9 +42,9 @@ class Database
 
     /**
      * Define a tabela, instância e conexão
-     * @param string
+     * @param string|null
      */
-    public function __construct(string $table)
+    public function __construct(string $table = null)
     {
         $this->table = $table;
         $this->setConnection();
@@ -117,9 +117,9 @@ class Database
                            string $fields = '*'): PDOStatement
     {
         // dados da query
-        $where = strlen($where) ? 'WHERE' . $where : '';
-        $order = strlen($order) ? 'ORDER BY' . $order : '';
-        $limit = strlen($limit) ? 'LIMIT' . $limit : '';
+        $where = strlen($where) ? 'WHERE ' . $where : '';
+        $order = strlen($order) ? 'ORDER BY ' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
         // monta a query
         $query = /** @lang text */

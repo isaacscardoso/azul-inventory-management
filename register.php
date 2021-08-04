@@ -6,7 +6,7 @@ const TITLE = 'Adicionar Produto';
 const TITLE_BUTTON = 'Adicionar';
 
 use App\Entity\Product;
-$objProduct = new Product();
+$objProduct = new Product;
 
 // validação do post
 if (isset($_POST['name'], $_POST['price'], $_POST['stock'])) {
