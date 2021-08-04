@@ -4,6 +4,7 @@ namespace App\Database;
 
 use PDO;
 use PDOException;
+use PDOStatement;
 
 class Database
 {
@@ -29,15 +30,15 @@ class Database
 
     /**
      * Nome da tabela a ser manipulada
-     * @var
+     * @var string
      */
-    private $table;
+    private string $table;
 
     /**
      * Instância de conexão com o DB
      * @var PDO
      */
-    private $connection;
+    private PDO $connection;
 
     /**
      * Define a tabela, instância e conexão
@@ -55,7 +56,8 @@ class Database
     private function setConnection()
     {
         try {
-            $this->connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME, self::USER, self::PASSW);
+            $this->connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME, self::USER,
+                self::PASSW);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
             die('Error: ' . $exception->getMessage());
@@ -63,12 +65,36 @@ class Database
     }
 
     /**
-     *Método responsável por executar queries dentro do DB
+     * Método responsável por inserir dados no banco
+     * @param array $values
+     * @return integer
+     */
+    public function insert(array $values): int
+    {
+        // dados da query
+        $fields = array_keys($values);
+
+        // enésimas posições no array de acordo com enésimo tamanho de fields
+        $binds = array_pad([], count($fields), '?');
+
+        // monta a query
+        $query = /** @lang text */
+            'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ') 
+            VALUES (' . implode(',', $binds) . ')';
+
+        $this->execute($query, array_values($values));
+
+        // retorna o ID inserido
+        return $this->connection->lastInsertId();
+    }
+
+    /**
+     * Método responsável por executar queries dentro do DB
      * @param string $query
      * @param array $params
-     * @return \PDOStatement
+     * @return PDOStatement
      */
-    public function execute(string $query, array $params =[])
+    public function execute(string $query, array $params = []): PDOStatement
     {
         try {
             $statment = $this->connection->prepare($query);
@@ -80,22 +106,25 @@ class Database
     }
 
     /**
-     * Método responsável por inserir dados no banco
-     * @param array $values
-     * @return integer
+     * Método responsável por executar uma consulta no DB
+     * @param string|null $where
+     * @param string|null $order
+     * @param string|null $limit
+     * @param string $fields
+     * @return PDOStatement
      */
-    public function insert(array $values)
+    public function select(string $where = null, string $order = null, string $limit = null,
+                           string $fields = '*'): PDOStatement
     {
         // dados da query
-        $fields = array_keys($values);
-        $binds = array_pad([], count($fields), '?');
+        $where = strlen($where) ? 'WHERE' . $where : '';
+        $order = strlen($order) ? 'ORDER BY' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT' . $limit : '';
 
         // monta a query
-        $query = 'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ') VALUES (' . implode(',', $binds) . ')';
+        $query = /** @lang text */
+            'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
 
-        $this->execute($query, array_values($values));
-
-        // retorna o ID inserido
-        return $this->connection->lastInsertId();
+        return $this->execute($query);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Database\Database;
+use PDO;
 
 class Product
 {
@@ -68,11 +69,21 @@ class Product
             'estoque' => $this->stock
         ]);
 
-        echo "<prev>";
-        print_r($this);
-        echo "</prev>"; exit;
-
         return true;
-
     }
+
+    /**
+     * Método responsável por listar todos os produtos do DB
+     * @param string|null $where
+     * @param string|null $order
+     * @param string|null $limit
+     * @return array
+     */
+    public static function getAllProducts(string $where = null, string $order = null, string $limit = null): array
+    {
+        return (new Database('produtos'))->select($where, $order, $limit)->fetchAll(
+            PDO::FETCH_CLASS, self::class
+        );
+    }
+
 }
