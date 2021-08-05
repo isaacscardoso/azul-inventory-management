@@ -36,5 +36,5 @@ if (isset($_POST['name'], $_POST['price'], $_POST['stock'])) {
 }
 
 include __DIR__ . '/includes/header.php';
-include __DIR__ . '/includes/form.php';
+include __DIR__ . '/includes/edit.php';
 include __DIR__ . '/includes/footer.php';
