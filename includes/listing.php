@@ -64,7 +64,8 @@ $results = strlen($results) ? $results : /** @lang text */
             <div class="row my-3">
                 <!-- barra de pesquisa -->
                 <div class="col">
-                    <input type="text" name="search" class="form-control" placeholder="Pesquisar produto por nome">
+                    <input type="text" name="search" class="form-control" placeholder="Pesquisar produto por nome"
+                           value="<?= $search ?>">
                 </div>
                 <!-- botão pesquisar -->
                 <div class="col d-md-flex align-items-end ">
