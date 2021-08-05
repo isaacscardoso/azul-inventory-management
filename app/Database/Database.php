@@ -129,6 +129,7 @@ class Database
     }
 
     /**
+     * Método responsável por atualizar o produto no DB
      * @param string $where
      * @param array $values
      * @return boolean
