@@ -12,17 +12,12 @@ $results = '';
 
 if (isset($products)) {
     foreach ($products as $product) {
-        $product->estado = match ($product->estado) {
-            'publicado' => 'Publicado',
-            'pendente' => 'Pendente',
-            'rascunho' => 'Rascunho',
-        };
 
         $results .= /** @lang text */
             '<tr>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
-                <td>' . ($product->tipo == 'virtual' ? 'Virtual' : 'Fisico') . '</td>
+                <td>' . $product->tipo . '</td>
                 <td>' . $product->estado . '</td>
                 <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
                 <td>' . $product->estoque . '</td>

@@ -22,11 +22,11 @@
                 Produto Virtual ou Fisico
                 <div>
                     <!-- fisico -->
-                    <input type="radio" class="btn-check" name="virtual" id="virtual1" value="fisico" autocomplete="off"
+                    <input type="radio" class="btn-check" name="virtual" id="virtual1" value="Fisico" autocomplete="off"
                            checked>
                     <label class="btn btn-outline-warning" for="virtual1">FISICO</label>
                     <!-- virtual -->
-                    <input type="radio" class="btn-check" name="virtual" id="virtual2" value="virtual" autocomplete="off">
+                    <input type="radio" class="btn-check" name="virtual" id="virtual2" value="Virtual" autocomplete="off">
                     <label class="btn btn-outline-info" for="virtual2">VIRTUAL</label>
                 </div>
             </div>
@@ -37,17 +37,17 @@
                 Estado de Publicação do Produto
                 <!-- publicado -->
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="status1" value="publicado" checked>
+                    <input class="form-check-input" type="radio" name="status" id="status1" value="Publicado" checked>
                     <label class="form-check-label" for="status1">Publicado</label>
                 </div>
                 <!-- pendente -->
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status2" value="pendente">
+                    <input class="form-check-input" type="radio" name="status" id="status2" value="Pendente">
                     <label class="form-check-label" for="status2">Pendente</label>
                 </div>
                 <!-- rascunho -->
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status3" value="rascunho">
+                    <input class="form-check-input" type="radio" name="status" id="status3" value="Rascunho">
                     <label class="form-check-label" for="status3">Rascunho</label>
                 </div>
             </div>
