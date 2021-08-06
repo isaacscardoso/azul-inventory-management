@@ -16,6 +16,20 @@
                 <input type="text" class="form-control" name="sku" value="<?= $objProduct->sku ?>"/>
             </label>
         </div>
+        <!-- se produto é virtual -->
+        <div class="form-group">
+            <label class="col-md-3">
+                Virtual
+                <input type="text" class="form-control" name="virtual" value="<?= $objProduct->tipo ?>">
+            </label>
+        </div>
+        <!-- estado de publicação -->
+        <div class="form-group">
+            <label class="col-md-3">
+                Estado
+                <input type="text" class="form-control" name="status" value="<?= $objProduct->estado ?>">
+            </label>
+        </div>
         <!-- preço do produto -->
         <div class="form-group">
             <label class="col-md-3">

@@ -141,7 +141,7 @@ class Database
         // monta a query
         $query = 'UPDATE ' . $this->table . ' SET ' . implode('=?,', $fields) . '=? WHERE ' . $where;
 
-        // executa a querry
+        // executa a query
         $this->execute($query, array_values($values));
 
         return true;

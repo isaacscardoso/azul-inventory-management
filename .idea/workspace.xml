@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76daf5a4-f855-49cb-94dc-d88157dde358" name="Changes" comment="" />
+    <list default="true" id="76daf5a4-f855-49cb-94dc-d88157dde358" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Database/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Database/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/listing.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/listing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1628273347937</updated>
-      <workItem from="1628273351645" duration="768000" />
+      <workItem from="1628273351645" duration="2971000" />
     </task>
     <servers />
   </component>

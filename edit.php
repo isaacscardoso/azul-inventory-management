@@ -23,13 +23,15 @@ if (!$objProduct instanceof Product) {
 }
 
 // validação do post
-if (isset($_POST['name'], $_POST['price'], $_POST['stock'])) {
+if (isset($_POST['name'], $_POST['sku'], $_POST['virtual'], $_POST['status'], $_POST['price'], $_POST['stock'])) {
 
     $objProduct->name = $_POST['name'];
     $objProduct->sku = $_POST['sku'];
+    $objProduct->virtual = $_POST['virtual'];
+    $objProduct->status = $_POST['status'];
     $objProduct->price = $_POST['price'];
     $objProduct->stock = $_POST['stock'];
-    
+
     $objProduct->updateProduct();
 
     header('location: index.php?status=success');

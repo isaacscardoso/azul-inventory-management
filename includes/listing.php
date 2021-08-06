@@ -2,15 +2,10 @@
 
 $message = '';
 if (isset($_GET['status'])) {
-    switch ($_GET['status']) {
-        case 'success':
-            $message = '<div class="alert alert-success">Ação executada com sucesso!</div>';
-            break;
-
-        case 'error':
-            $message = '<div class="alert alert-danger">Ação não executada!</div>';
-            break;
-    }
+    $message = match ($_GET['status']) {
+        'success' => '<div class="alert alert-success">Ação executada com sucesso!</div>',
+        'error' => '<div class="alert alert-danger">Ação não executada!</div>',
+    };
 }
 
 $results = '';
@@ -21,6 +16,8 @@ if (isset($products)) {
             '<tr>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
+                <td>' . $product->tipo . '</td>
+                <td>' . $product->estado . '</td>
                 <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
                 <td>' . $product->estoque . '</td>
                 <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
@@ -81,6 +78,8 @@ $results = strlen($results) ? $results : /** @lang text */
             <tr>
                 <th>PRODUTO</th>
                 <th>SKU</th>
+                <th>TIPO</th>
+                <th>ESTADO</th>
                 <th>PREÇO</th>
                 <th>ESTOQUE</th>
                 <th>DATA DE POSTAGEM</th>
