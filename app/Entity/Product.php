@@ -20,6 +20,18 @@ class Product
     public string $sku;
 
     /**
+     * Se produto é virtual
+     * @var string (true/false)
+     */
+    public string $virtual;
+
+    /**
+     * Estado de publicação do produto
+     * @var string (publish/pending/draft)
+     */
+    public string $status;
+
+    /**
      * Nome do produto
      * @var string
      */
@@ -90,6 +102,8 @@ class Product
         $this->id = $objDatabase->insert([
             'nome' => $this->name,
             'sku' => $this->sku,
+            'virtual' => $this->virtual,
+            'status' => $this->status,
             'preco' => $this->price,
             'estoque' => $this->stock
         ]);
@@ -106,6 +120,8 @@ class Product
         return (new Database('produtos'))->update('id= ' . $this->id, [
             'nome' => $this->name,
             'sku' => $this->sku,
+            'virtual' => $this->virtual,
+            'status' => $this->status,
             'preco' => $this->price,
             'estoque' => $this->stock
         ]);
@@ -117,6 +133,6 @@ class Product
      */
     public function deleteProduct(): bool
     {
-        return (new Database('produtos'))->delete('id = '.$this->id);
+        return (new Database('produtos'))->delete('id = ' . $this->id);
     }
 }
