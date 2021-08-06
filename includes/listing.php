@@ -2,27 +2,25 @@
 
 $message = '';
 if (isset($_GET['status'])) {
-    $message = match ($_GET['status']) {
-        'success' => '<div class="alert alert-success">Ação executada com sucesso!</div>',
-        'error' => '<div class="alert alert-danger">Ação não executada!</div>',
-    };
+    switch ($_GET['status']) {
+        case 'success':
+            $message = '<div class="alert alert-success">Ação executada com sucesso!</div>';
+            break;
+
+        case 'error':
+            $message = '<div class="alert alert-danger">Ação não executada!</div>';
+            break;
+    }
 }
 
 $results = '';
 
 if (isset($products)) {
     foreach ($products as $product) {
-        $product->status = match ($product->status) {
-            'publish' => '<strong>P</strong>ublicado',
-            'pending' => '<strong>P</strong>endente',
-            'draft' => '<strong>R</strong>ascunho',
-        };
         $results .= /** @lang text */
             '<tr>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
-                <td>' . ($product->virtual == 'true' ? 'SIM' : 'NÃO') . ' </td>
-                <td>' . $product->status . ' </td>
                 <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
                 <td>' . $product->estoque . '</td>
                 <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
@@ -60,7 +58,7 @@ $results = strlen($results) ? $results : /** @lang text */
             </a>
         </div>
     </section>
-    <!--  -->
+    <!-- barra pesquisa -->
     <section>
         <form method="get">
             <div class="row my-3">
@@ -76,15 +74,13 @@ $results = strlen($results) ? $results : /** @lang text */
             </div>
         </form>
     </section>
-    <!-- tabela dos produtos -->
+    <!-- tabela de produtos -->
     <section>
         <table class="table bg-light mt-3 table-hover">
             <thead>
             <tr>
                 <th>PRODUTO</th>
                 <th>SKU</th>
-                <th>VIRTUAL</th>
-                <th>STATUS</th>
                 <th>PREÇO</th>
                 <th>ESTOQUE</th>
                 <th>DATA DE POSTAGEM</th>

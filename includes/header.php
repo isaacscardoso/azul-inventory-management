@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="jumbotron bg-danger p-3 my-3">
-            <h1>Gerenciamento de Estoque</h1>
+            <h1>GERENCIAMENTO DE ESTOQUE</h1>
         </div>
 
 

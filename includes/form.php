@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="col-md-3">
                 Nome
-                <input type="text" class="form-control" name="name" value="" required/>
+                <input type="text" class="form-control" name="name" value="" autocomplete="false" required/>
             </label>
         </div>
         <!-- sku do produto -->
@@ -16,28 +16,6 @@
                 <input type="text" class="form-control" name="sku" value=""/>
             </label>
         </div>
-        <!-- se produto é virtual -->
-        <div class="form-group">
-            <label>Produto (virtual / físico)</label>
-            <div>
-                <!-- campo virtual -->
-                <div class="form-check form-check-inline">
-                    <label class="form-control">
-                        <input type="radio" name="virtual" value="true"> Virtual
-                    </label>
-                </div>
-                <!-- campo físico -->
-                <div class="form-check form-check-inline">
-                    <label class="form-control">
-                        <input type="radio" name="virtual" value="false" checked> Físico
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- status de publicação de produto -->
-
-
         <!-- preço do produto -->
         <div class="form-group">
             <label class="col-md-3">
