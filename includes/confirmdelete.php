@@ -4,7 +4,7 @@
     <form method="post">
         <!-- nome do produto -->
         <div class="form-group">
-            <p>Confirmar exclusão do produto <strong><?=$objProduct->nome?></strong></p>
+            <p>Confirmar exclusão do produto <strong><?= $objProduct->nome ?></strong></p>
         </div>
         <!-- botão adicionar -->
         <div class="form-group mt-3">

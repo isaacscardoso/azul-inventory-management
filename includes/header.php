@@ -13,10 +13,10 @@
 </head>
 <body class="bg-dark text-light">
 
-    <div class="container">
-        <div class="jumbotron bg-danger p-3 my-3">
-            <h1>GERENCIAMENTO DE ESTOQUE</h1>
-        </div>
+<div class="container">
+    <div class="jumbotron bg-danger p-3 my-3">
+        <h1>GERENCIAMENTO DE ESTOQUE</h1>
+    </div>
 
 
     <!-- listing -->

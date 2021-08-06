@@ -14,16 +14,17 @@ class Product
     public int $id;
 
     /**
+     * Nome do produto
+     * @var string
+     */
+    public string $name;
+
+    /**
      * SKU do produto
      * @var string
      */
     public string $sku;
 
-    /**
-     * Nome do produto
-     * @var string
-     */
-    public string $name;
 
     /**
      * Preço do produto

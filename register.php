@@ -12,10 +12,10 @@ $objProduct = new Product;
 if (isset($_POST['name'], $_POST['price'], $_POST['stock'])) {
 
     $objProduct->name = $_POST['name'];
+    $objProduct->sku = $_POST['sku'];
     $objProduct->price = $_POST['price'];
     $objProduct->stock = $_POST['stock'];
-    $objProduct->sku = $_POST['sku'];
-
+    
     $objProduct->addProduct();
 
     header('location: index.php?status=success');
