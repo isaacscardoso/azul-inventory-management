@@ -12,11 +12,17 @@ $results = '';
 
 if (isset($products)) {
     foreach ($products as $product) {
+        $product->estado = match ($product->estado) {
+            'publicado' => 'Publicado',
+            'pendente' => 'Pendente',
+            'rascunho' => 'Rascunho',
+        };
+
         $results .= /** @lang text */
             '<tr>
                 <td>' . $product->nome . '</td>
                 <td>' . $product->sku . '</td>
-                <td>' . $product->tipo . '</td>
+                <td>' . ($product->tipo == 'virtual' ? 'Virtual' : 'Fisico') . '</td>
                 <td>' . $product->estado . '</td>
                 <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
                 <td>' . $product->estoque . '</td>
@@ -37,11 +43,11 @@ if (isset($products)) {
 }
 
 $results = strlen($results) ? $results : /** @lang text */
-    '<tr>
-                <td colspan="8" class="text-center">
-                    Nenhum Produto encontrado!
-                </td>
-             </tr>'
+        '<tr>
+            <td colspan="8" class="text-center">
+                Nenhum Produto encontrado!
+            </td>
+         </tr>'
 
 ?>
 
