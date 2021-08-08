@@ -26,7 +26,8 @@
                            checked>
                     <label class="btn btn-outline-warning" for="virtual1">FISICO</label>
                     <!-- virtual -->
-                    <input type="radio" class="btn-check" name="virtual" id="virtual2" value="Virtual" autocomplete="off">
+                    <input type="radio" class="btn-check" name="virtual" id="virtual2"
+                           value="Virtual" <?= $objProduct->tipo == 'Virtual' ? 'checked' : '' ?> autocomplete="off">
                     <label class="btn btn-outline-info" for="virtual2">VIRTUAL</label>
                 </div>
             </div>
@@ -34,22 +35,24 @@
         <!-- estado de publicação -->
         <div class="form-group">
             <div class="my-2">
-                Estado de Publicação do Produto
                 <!-- publicado -->
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="status1" value="Publicado" checked>
-                    <label class="form-check-label" for="status1">Publicado</label>
-                </div>
-                <!-- pendente -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status2" value="Pendente">
-                    <label class="form-check-label" for="status2">Pendente</label>
-                </div>
-                <!-- rascunho -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status3" value="Rascunho">
-                    <label class="form-check-label" for="status3">Rascunho</label>
-                </div>
+                <label class="col-md-3">
+                    Estado de Publicação do Produto
+                    <select name="status" class="form-control">
+                        <!-- selecione... -->
+                        <option value="Publicado" selected>Selecione...</option>
+                        <!-- publicado -->
+                        <option value="Publicado" <?= $objProduct->estado == 'Publicado' ? 'selected' : '' ?> >
+                            Publicado
+                        </option>
+                        <!-- pendente -->
+                        <option value="Pendente" <?= $objProduct->estado == 'Pendente' ? 'selected' : '' ?>>Pendente
+                        </option>
+                        <!-- rascunho -->
+                        <option value="Rascunho" <?= $objProduct->estado == 'Rascunho' ? 'selected' : '' ?>>Rascunho
+                        </option>
+                    </select>
+                </label>
             </div>
         </div>
         <!-- preço do produto -->

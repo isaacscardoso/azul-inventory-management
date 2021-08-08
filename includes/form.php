@@ -34,22 +34,16 @@
         <!-- estado de publicação -->
         <div class="form-group">
             <div class="my-2">
-                Estado de Publicação do Produto
                 <!-- publicado -->
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="status1" value="Publicado" checked>
-                    <label class="form-check-label" for="status1">Publicado</label>
-                </div>
-                <!-- pendente -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status2" value="Pendente">
-                    <label class="form-check-label" for="status2">Pendente</label>
-                </div>
-                <!-- rascunho -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="status3" value="Rascunho">
-                    <label class="form-check-label" for="status3">Rascunho</label>
-                </div>
+                <label class="col-md-3">
+                    Estado de Publicação do Produto
+                    <select name="status" class="form-control">
+                        <option value="Publicado" selected>Selecione...</option>
+                        <option value="Publicado">Publicado</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Rascunho">Rascunho</option>
+                    </select>
+                </label>
             </div>
         </div>
         <!-- preço do produto -->

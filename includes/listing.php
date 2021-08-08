@@ -65,6 +65,14 @@ $results = strlen($results) ? $results : /** @lang text */
                     <input type="text" name="search" class="form-control" placeholder="Pesquisar produto por nome"
                            value="<?= $search ?>">
                 </div>
+                <!-- filtro -->
+                <div class="col">
+                    <select name="filter" class="form-control">
+                        <option value="">Fisico/Virtual</option>
+                        <option value="fisico">Fisico</option>
+                        <option value="virtual">Virtual</option>
+                    </select>
+                </div>
                 <!-- botão pesquisar -->
                 <div class="col d-md-flex align-items-end ">
                     <button type="submit" class="btn btn-primary">Pesquisar</button>
