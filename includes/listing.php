@@ -38,7 +38,7 @@ if (isset($products)) {
 }
 
 $results = strlen($results) ? $results : /** @lang text */
-        '<tr>
+    '<tr>
             <td colspan="8" class="text-center">
                 Nenhum Produto encontrado!
             </td>
@@ -63,26 +63,36 @@ $results = strlen($results) ? $results : /** @lang text */
                 <!-- barra de pesquisa -->
                 <div class="col">
                     <label for="search">Buscar por Produto</label>
-                    <input type="text" name="search" id="search" class="form-control" placeholder="Pesquisar produto por nome"
+                    <input type="text" name="search" id="search" class="form-control"
+                           placeholder="Pesquisar produto por nome"
                            value="<?= $search ?>">
                 </div>
                 <!-- filtrar por virtual / fisico -->
                 <div class="col">
                     <label for="filter">Tipo</label>
                     <select name="filter" id="filter" class="form-control">
-                        <option value="">Fisico/Virtual</option>
-                        <option value="Fisico">Fisico</option>
-                        <option value="Virtual">Virtual</option>
+                        <option value="">Selecione...</option>
+                        <option value="Fisico" <?= $filter == 'Fisico' ? 'selected' : '' ?> >Fisico</option>
+                        <option value="Virtual" <?= $filter == 'Virtual' ? 'selected' : '' ?> >Virtual</option>
                     </select>
                 </div>
                 <!-- filtrar por estado de publicação -->
                 <div class="col">
-                    <label for="publicationStatus">Estado de Publicação</label>
+                    <label for="publicationStatus">Estado de Publicação do Produto</label>
                     <select name="publicationStatus" id="publicationStatus" class="form-control">
-                        <option value="">Publicado/Pendente/Rascunho</option>
-                        <option value="Publicado">Publicado</option>
-                        <option value="Pendente">Pendente</option>
-                        <option value="Rascunho">Rascunho</option>
+                        <option value="">Selecione...</option>
+                        <!-- publicado -->
+                        <option value="Publicado" <?= $publicationStatus == 'Publicado' ? 'selected' : '' ?> >
+                            Publicado
+                        </option>
+                        <!-- pendente -->
+                        <option value="Pendente" <?= $publicationStatus == 'Pendente' ? 'selected' : '' ?> >
+                            Pendente
+                        </option>
+                        <!-- rascunho -->
+                        <option value="Rascunho" <?= $publicationStatus == 'Rascunho' ? 'selected' : '' ?> >
+                            Rascunho
+                        </option>
                     </select>
                 </div>
                 <!-- botão pesquisar -->
