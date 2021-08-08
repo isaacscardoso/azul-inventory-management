@@ -62,12 +62,14 @@ $results = strlen($results) ? $results : /** @lang text */
             <div class="row my-3">
                 <!-- barra de pesquisa -->
                 <div class="col">
-                    <input type="text" name="search" class="form-control" placeholder="Pesquisar produto por nome"
+                    <label for="search">Buscar por Produto</label>
+                    <input type="text" name="search" id="search" class="form-control" placeholder="Pesquisar produto por nome"
                            value="<?= $search ?>">
                 </div>
                 <!-- filtrar por virtual / fisico -->
                 <div class="col">
-                    <select name="filter" class="form-control">
+                    <label for="filter">Tipo</label>
+                    <select name="filter" id="filter" class="form-control">
                         <option value="">Fisico/Virtual</option>
                         <option value="Fisico">Fisico</option>
                         <option value="Virtual">Virtual</option>
@@ -75,7 +77,8 @@ $results = strlen($results) ? $results : /** @lang text */
                 </div>
                 <!-- filtrar por estado de publicação -->
                 <div class="col">
-                    <select name="publicationStatus" class="form-control">
+                    <label for="publicationStatus">Estado de Publicação</label>
+                    <select name="publicationStatus" id="publicationStatus" class="form-control">
                         <option value="">Publicado/Pendente/Rascunho</option>
                         <option value="Publicado">Publicado</option>
                         <option value="Pendente">Pendente</option>
