@@ -65,12 +65,21 @@ $results = strlen($results) ? $results : /** @lang text */
                     <input type="text" name="search" class="form-control" placeholder="Pesquisar produto por nome"
                            value="<?= $search ?>">
                 </div>
-                <!-- filtro -->
+                <!-- filtrar por virtual / fisico -->
                 <div class="col">
                     <select name="filter" class="form-control">
                         <option value="">Fisico/Virtual</option>
-                        <option value="fisico">Fisico</option>
-                        <option value="virtual">Virtual</option>
+                        <option value="Fisico">Fisico</option>
+                        <option value="Virtual">Virtual</option>
+                    </select>
+                </div>
+                <!-- filtrar por estado de publicação -->
+                <div class="col">
+                    <select name="publicationStatus" class="form-control">
+                        <option value="">Publicado/Pendente/Rascunho</option>
+                        <option value="Publicado">Publicado</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Rascunho">Rascunho</option>
                     </select>
                 </div>
                 <!-- botão pesquisar -->
