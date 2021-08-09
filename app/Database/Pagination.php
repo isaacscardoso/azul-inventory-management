@@ -63,4 +63,25 @@ class Pagination
         $offset = ($this->limit * ($this->currentPage - 1));
         return $offset . ',' . $this->limit;
     }
+
+    /**
+     * Método responsável por retornar as opções de páginas disponíveis
+     * @return array
+     */
+    public function getPages(): array
+    {
+        if ($this->pages == 1) return [];
+
+        // paginas
+        $pages = [];
+
+        for ($i = 1; $i <= $this->pages; $i++) {
+            $pages[] = [
+                'pagina' => $i,
+                'atual' => $i == $this->currentPage
+            ];
+        }
+
+        return $pages;
+    }
 }

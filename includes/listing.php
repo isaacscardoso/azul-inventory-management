@@ -3,8 +3,10 @@
 $message = '';
 if (isset($_GET['status'])) {
     $message = match ($_GET['status']) {
-        'success' => '<div class="alert alert-success">Ação executada com sucesso!</div>',
-        'error' => '<div class="alert alert-danger">Ação não executada!</div>',
+        'success' => /** @lang text */
+        '<div class="alert alert-success">Ação executada com sucesso!</div>',
+        'error' => /** @lang text */
+        '<div class="alert alert-danger">Ação não executada!</div>',
     };
 }
 
@@ -12,37 +14,57 @@ $results = '';
 
 if (isset($products)) {
     foreach ($products as $product) {
-
         $results .= /** @lang text */
             '<tr>
-                <td>' . $product->nome . '</td>
-                <td>' . $product->sku . '</td>
-                <td>' . $product->tipo . '</td>
-                <td>' . $product->estado . '</td>
-                <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
-                <td>' . $product->estoque . '</td>
-                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
-                <td>' . date('d/m/Y - H:i:s', strtotime($product->data_atualizacao)) . '</td>
-                <td>
-                    <div class="d-grid gap-1 d-md-flex justify-content-md-end">    
-                        <a href="edit.php?id=' . $product->id . '" style="text-decoration: none">
-                            <button type="button" class="btn btn-primary">Editar</button>
-                        </a>
-                        <a href="delete.php?id=' . $product->id . '">
-                            <button type="button" class="btn btn-danger">Excluir</button>
-                        </a>
-                    </div>
-                </td>
-             </tr>';
+        <td>' . $product->nome . '</td>
+        <td>' . $product->sku . '</td>
+        <td>' . $product->tipo . '</td>
+        <td>' . $product->estado . '</td>
+        <td>' . 'R$ ' . number_format($product->preco, 2, ",", ".") . '</td>
+        <td>' . $product->estoque . '</td>
+        <td>' . date('d/m/Y - H:i:s', strtotime($product->data_postagem)) . '</td>
+        <td>' . date('d/m/Y - H:i:s', strtotime($product->data_atualizacao)) . '</td>
+        <td>
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end">    
+                <a href="edit.php?id=' . $product->id . '" style="text-decoration: none">
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </a>
+                <a href="delete.php?id=' . $product->id . '">
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                </a>
+            </div>
+        </td>
+     </tr>';
     }
 }
 
+// produtos encontrados
 $results = strlen($results) ? $results : /** @lang text */
     '<tr>
-            <td colspan="8" class="text-center">
-                Nenhum Produto encontrado!
-            </td>
-         </tr>'
+        <td colspan="8" class="text-center">
+            Nenhum Produto encontrado!
+        </td>
+     </tr>';
+
+//
+unset($_GET['status']);
+unset($_GET['pagina']);
+
+$gets = http_build_query($_GET);
+
+// paginação
+$pagination = '';
+$pages = ($objPagination ?? '')->getPages();
+
+foreach ($pages as $key => $page) {
+    $currentPageStyle = $page['atual'] ? 'btn-warning' : 'btn-light';
+    $pagination .= /** @lang text */
+        '<a href="?pagina=' . $page['pagina'] . '&' . $gets . '" style="text-decoration: none">
+        <button type="button" class="btn ' . $currentPageStyle . '">'
+        . $page['pagina'] . '
+        </button>
+    </a>';
+}
 
 ?>
 
@@ -122,6 +144,10 @@ $results = strlen($results) ? $results : /** @lang text */
             <?= $results ?>
             </tbody>
         </table>
+    </section>
+    <!-- paginação -->
+    <section>
+        <?= $pagination ?>
     </section>
 </main>
 <!-- body -->

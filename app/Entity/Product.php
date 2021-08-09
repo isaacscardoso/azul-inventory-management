@@ -35,7 +35,7 @@ class Product
      * Estado de publicação do produto
      * @var string
      */
-    public string $status;
+    public string $productPublicationStatus;
 
     /**
      * Preço do produto
@@ -114,7 +114,7 @@ class Product
             'nome' => $this->name,
             'sku' => $this->sku,
             'tipo' => $this->virtual,
-            'estado' => $this->status,
+            'estado' => $this->productPublicationStatus,
             'preco' => $this->price,
             'estoque' => $this->stock
         ]);
@@ -132,7 +132,7 @@ class Product
             'nome' => $this->name,
             'sku' => $this->sku,
             'tipo' => $this->virtual,
-            'estado' => $this->status,
+            'estado' => $this->productPublicationStatus,
             'preco' => $this->price,
             'estoque' => $this->stock
         ]);

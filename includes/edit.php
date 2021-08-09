@@ -38,7 +38,7 @@
                 <!-- publicado -->
                 <div class="col-md-3">
                     <label for="publicationStatus">Estado de Publicação do Produto</label>
-                    <select name="status" id="publicationStatus" class="form-control">
+                    <select name="productPublicationStatus" id="publicationStatus" class="form-control">
                         <option value="Publicado">Selecione...</option>
                         <!-- publicado -->
                         <option value="Publicado" <?= ($objProduct->estado ?? '') == 'Publicado' ? 'selected' : '' ?> >
