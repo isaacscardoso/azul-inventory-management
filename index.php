@@ -3,6 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use App\Entity\Product;
+use App\Database\Pagination;
 
 // variável busca com filtro de entrada para evitar SQL Injection, tags html, javascript, etc.
 $search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
@@ -28,8 +29,17 @@ $conditionsSQL = array_filter($conditionsSQL);
 // clausula where
 $where = implode(' AND ', $conditionsSQL);
 
+// ~~
+
+// quantidade total de produtos
+$quantityProduct = Product::getQuantityProduct($where);
+
+// paginação
+$limitPerPage = 6;
+$objPagination = new Pagination($quantityProduct, $_GET['pagina'] ?? 1, $limitPerPage);
+
 // obtém todos os produtos ou produtos filtrados pelo where
-$products = Product::getAllProducts($where);
+$products = Product::getAllProducts($where, null, $objPagination->getLimit());
 
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/listing.php';

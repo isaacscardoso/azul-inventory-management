@@ -76,6 +76,17 @@ class Product
     }
 
     /**
+     * Método responsável por obter a quantidade de produtos do DB
+     * @param string|null $where
+     * @return int
+     */
+    public static function getQuantityProduct(string $where = null): int
+    {
+        return (new Database('produtos'))->select($where, null, null,
+            'COUNT(*) as Quantidade')->fetchObject()->Quantidade;
+    }
+
+    /**
      * Método responsável por buscar um produto por ID
      * @param integer $id
      * @return Product

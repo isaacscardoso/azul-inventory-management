@@ -65,15 +65,15 @@ $results = strlen($results) ? $results : /** @lang text */
                     <label for="search">Buscar por Produto</label>
                     <input type="text" name="search" id="search" class="form-control"
                            placeholder="Pesquisar produto por nome"
-                           value="<?= $search ?>">
+                           value="<?= $search ?? '' ?>">
                 </div>
                 <!-- filtrar por virtual / fisico -->
                 <div class="col">
                     <label for="filter">Tipo</label>
                     <select name="filter" id="filter" class="form-control">
                         <option value="">Selecione...</option>
-                        <option value="Fisico" <?= $filter == 'Fisico' ? 'selected' : '' ?> >Fisico</option>
-                        <option value="Virtual" <?= $filter == 'Virtual' ? 'selected' : '' ?> >Virtual</option>
+                        <option value="Fisico" <?= ($filter ?? '') == 'Fisico' ? 'selected' : '' ?> >Fisico</option>
+                        <option value="Virtual" <?= ($filter ?? '') == 'Virtual' ? 'selected' : '' ?> >Virtual</option>
                     </select>
                 </div>
                 <!-- filtrar por estado de publicação -->
@@ -82,15 +82,15 @@ $results = strlen($results) ? $results : /** @lang text */
                     <select name="publicationStatus" id="publicationStatus" class="form-control">
                         <option value="">Selecione...</option>
                         <!-- publicado -->
-                        <option value="Publicado" <?= $publicationStatus == 'Publicado' ? 'selected' : '' ?> >
+                        <option value="Publicado" <?= ($publicationStatus ?? '') == 'Publicado' ? 'selected' : '' ?> >
                             Publicado
                         </option>
                         <!-- pendente -->
-                        <option value="Pendente" <?= $publicationStatus == 'Pendente' ? 'selected' : '' ?> >
+                        <option value="Pendente" <?= ($publicationStatus ?? '') == 'Pendente' ? 'selected' : '' ?> >
                             Pendente
                         </option>
                         <!-- rascunho -->
-                        <option value="Rascunho" <?= $publicationStatus == 'Rascunho' ? 'selected' : '' ?> >
+                        <option value="Rascunho" <?= ($publicationStatus ?? '') == 'Rascunho' ? 'selected' : '' ?> >
                             Rascunho
                         </option>
                     </select>
